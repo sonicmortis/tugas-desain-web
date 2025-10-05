@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Tugas Desain Web</title>
+    <link rel="stylesheet" href="desain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" id="home">
+        <section class="hero">
+            <h1>Selamat Datang di Website Tugas Desain Web</h1>
+        </section>
+
+        <section class="content">
+            <h2>Tentang Progressive Web App (PWA)</h2>
+            <p>
+                Website ini sekarang adalah sebuah <strong>Progressive Web App (PWA)</strong>! Ini berarti Anda dapat menginstalnya ke layar utama (home screen) perangkat Anda dan menikmatinya sebagai aplikasi mandiri. Dengan PWA, Anda akan merasakan performa yang lebih cepat, dapat diakses saat offline, dan pengalaman yang mirip dengan aplikasi asli (native app). Cobalah menginstalnya melalui menu browser Anda!
+            </p>
+            
+            <h2>Halaman Home</h2>
+            <p>
+                Ini adalah contoh website statis yang saling terhubung melalui anchor tag. Halaman ini berisi link yang menghubungkan ke bagian About dan Contact yang berada di bagian atas.
+            </p>
+        </section>
+    </div>
+    
+    <div class="container" id="about">
+        <section class="page-title">
+            <h1>About Me</h1>
+        </section>
+
+        <section class="content">
+            <div class="profile">
+                <div class="profile-info">
+                    <h2>Muhammad Luthfi Kautsar Rizata - 2311532020</h2>
+                </div>
+            </div>
+
+            <h2>Informasi Pribadi</h2>
+            <p>Mahasiswa semester 5 jurusan Informatika di Universitas Andalas yang memiliki minat dalam Data Science dan Machine Learning.</p>
+            <h2>Pendidikan</h2>
+            <p>SMA Negeri 10 Padang</p>
+            <p>Universitas Andalas - Informatika</p>
+            <h2>Keahlian Teknis</h2>
+            <p>HTML, CSS, JavaScript, Python, MySQL</p>
+        </section>
+    </div>
+
+    <div class="container" id="contact">
+        <section class="page-title">
+            <h1>Contact</h1>
+        </section>
+
+        <section class="content contact-section">
+            <div class="contact-info">
+                <h2>Informasi Kontak</h2>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>luthfikautsarrizata@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+62 831-6192-4295</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-square-instagram"></i>
+                    <span>luthfikautsar_</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                    <span>sonicmortis</span>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Kirim Pesan</h2>
+                <form onsubmit="handleSubmit(event)">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="kategori">Kategori Pesan:</label>
+                    <select id="kategori" name="kategori" required>
+                        <option value=""> Pilih Kategori </option>
+                        <option value="pertanyaan">Pertanyaan</option>
+                        <option value="saran">Saran</option>
+                        <option value="kritik">Kritik</option>
+                        <option value="masalah">Masalah</option>
+                    </select>
+                    <label for="pesan">Pesan:</label>
+                    <textarea id="pesan" name="pesan" required></textarea>
+                    <div class="radio-group">
+                        <label>Apakah ingin menerima balasan?</label><br>
+                        <input type="radio" id="ya" name="balasan" value="Ya" required>
+                        <label for="ya">Ya</label>
+                        <input type="radio" id="tidak" name="balasan" value="Tidak">
+                        <label for="tidak">Tidak</label>
+                    </div>
+                    <input type="submit" value="Kirim">
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>2025 Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Form berhasil dikirim!");
+            event.target.reset();
+        }
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log(`'beforeinstallprompt' event diaktifkan.`);
+        });
+        function showInstallPrompt() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Pengguna menerima instalasi PWA');
+                    } else {
+                        console.log('Pengguna menolak instalasi PWA');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('Service Worker berhasil didaftarkan: ', registration.scope);
+                }, function(err) {
+                    console.log('Pendaftaran Service Worker gagal: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

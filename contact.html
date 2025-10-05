@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Tugas Desain Web</title>
+  <link rel="stylesheet" href="desain.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="page-title">
+      <h1>Contact</h1>
+    </section>
+
+    <section class="content contact-section">
+      <div class="contact-info">
+  <h2>Informasi Kontak</h2>
+
+  <div class="contact-item">
+    <i class="fas fa-envelope"></i>
+    <span>luthfikautsarrizata@gmail.com</span>
+  </div>
+
+  <div class="contact-item">
+    <i class="fas fa-phone"></i>
+    <span>+62 831-6192-4295</span>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-brands fa-square-instagram"></i>
+    <span>luthfikautsar_</span>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-brands fa-github"></i>
+    <span>sonicmortis</span>
+  </div>
+</div>
+
+        <!-- Form Kontak -->
+      <div class="contact-form">
+        <h2>Kirim Pesan</h2>
+        <form onsubmit="handleSubmit(event)">
+          <label for="nama">Nama:</label>
+          <input type="text" id="nama" name="nama" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="kategori">Kategori Pesan:</label>
+          <select id="kategori" name="kategori" required>
+            <option value=""> Pilih Kategori </option>
+            <option value="pertanyaan">Pertanyaan</option>
+            <option value="saran">Saran</option>
+            <option value="kritik">Kritik</option>
+            <option value="masalah">Masalah</option>
+          </select>
+
+          <label for="pesan">Pesan:</label>
+          <textarea id="pesan" name="pesan" required></textarea>
+
+          <div class="radio-group">
+            <label>Apakah ingin menerima balasan?</label><br>
+            <input type="radio" id="ya" name="balasan" value="Ya" required>
+            <label for="ya">Ya</label>
+            <input type="radio" id="tidak" name="balasan" value="Tidak">
+            <label for="tidak">Tidak</label>
+          </div>
+
+          <input type="submit" value="Kirim">
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>2025 Website. All rights reserved.</p>
+  </footer>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("Form berhasil dikirim!");
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
